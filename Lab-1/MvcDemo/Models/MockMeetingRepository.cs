@@ -29,7 +29,7 @@ namespace MvcDemo
                 this.Add(m3);
                 this.Add(m4);
                 this.Add(m5);
-                this.Add(m1);
+                this.Add(m6);
             }
         }
         public Meeting Get(int id)
