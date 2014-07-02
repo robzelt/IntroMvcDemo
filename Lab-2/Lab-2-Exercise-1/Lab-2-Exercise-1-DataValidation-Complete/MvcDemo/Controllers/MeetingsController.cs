@@ -17,7 +17,7 @@ namespace MvcDemo.Controllers
             //When the controller is created instantiate an instance of the repository.
             meetingRepository = new MockMeetingRepository();
         }
-        
+
         // GET: Meetings
         public ActionResult Index()
         {
@@ -79,14 +79,22 @@ namespace MvcDemo.Controllers
         [HttpPost]
         public ActionResult Edit(int id, Meeting meeting)
         {
-            try
+            if (ModelState.IsValid)
             {
-                //Save the updated meeting which has been posted.
-                meetingRepository.Update(meeting);
-                return RedirectToAction("Index");
+                try
+                {
+                    //Save the updated meeting which has been posted.
+                    meetingRepository.Update(meeting);
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View(meeting);
+                }
             }
-            catch
+            else
             {
+                //If there is a validation error return the form view.
                 return View(meeting);
             }
         }
