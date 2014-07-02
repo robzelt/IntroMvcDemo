@@ -35,20 +35,22 @@ namespace MvcDemo.Models
         public int? AttendeesExpectedCount { get; set; }
 
         [Display(Name = "Actual Attendance")]
-        [Range(0, 200)]
+        [Range(0, 200, ErrorMessage = "I have an idea. Why don't you enter a value between 0 and 200.")]
         public int? AttendeesActualCount { get; set; }
 
-        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter a valid e-mail adress")]
+        //[RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter a valid e-mail adress")]
         [Required(ErrorMessage = "Oh no you don't. Someone has to be in charge of this meeting!")]
         [StringLength(150,ErrorMessage = "150 characters ain't enough for you huh?")]
         [Display(Name = "Meeting Admin Email")]
+        [EmailAddress]
         public string MeetingAdminEmailAddress { get; set; }
 
-        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter a valid e-mail adress")]
+        //[RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter a valid e-mail adress")]
         [Required(ErrorMessage = "You have to type the email address again to verify you typed it right the first time.")]
         [StringLength(150, ErrorMessage = "150 characters ain't enough for you huh?")]
         [Display(Name = "Confirm Email Address")]
-        [Compare("MeetingAdminEmailAddress", ErrorMessage = "Email addreses must match.")]
+        [Compare("MeetingAdminEmailAddress", ErrorMessage = "Email addresses must match.")]
+        [EmailAddress]
         public string ConfirmMeetingAdminEmailAddress { get; set; }
 
         public Meeting()
