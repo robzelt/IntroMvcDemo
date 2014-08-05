@@ -17,7 +17,7 @@ namespace MvcDemo.Controllers
             //When the controller is created instantiate an instance of the repository.
             meetingRepository = new MockMeetingRepository();
         }
-
+        
         // GET: Meetings
         public ActionResult Index()
         {
@@ -38,7 +38,8 @@ namespace MvcDemo.Controllers
         public ActionResult Create()
         {
             //Return the view which contains the form to enter a new meeting.
-            return View();
+            var meeting = new Meeting();
+            return View(meeting);
         }
 
         // POST: Meetings/Create
@@ -46,16 +47,24 @@ namespace MvcDemo.Controllers
         public ActionResult Create(Meeting meeting)
         {
             if (ModelState.IsValid)
+            {
+                try
                 {
                     //Take tne new meeting which has been posted and save it.
                     meetingRepository.Add(meeting);
                     return RedirectToAction("Index");
                 }
-            else
+                catch
                 {
                     //If there is an exception return the form view.
                     return View(meeting);
                 }
+            }
+            else
+            {
+                //If there is a validation error return the form view.
+                return View(meeting);
+            }
         }
 
         // GET: Meetings/Edit/5
@@ -70,13 +79,13 @@ namespace MvcDemo.Controllers
         [HttpPost]
         public ActionResult Edit(int id, Meeting meeting)
         {
-            if (ModelState.IsValid)
+            try
             {
                 //Save the updated meeting which has been posted.
                 meetingRepository.Update(meeting);
                 return RedirectToAction("Index");
             }
-            else
+            catch
             {
                 return View(meeting);
             }
