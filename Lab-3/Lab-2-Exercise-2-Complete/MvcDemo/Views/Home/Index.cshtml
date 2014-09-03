@@ -1,0 +1,22 @@
+﻿@model IEnumerable<MvcDemo.Models.Meeting>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Trinug Web SIG</h2>
+
+
+@foreach (var meeting in Model)
+{
+    if (meeting.Title.Contains("Web"))
+    {
+        @Html.Partial("webMeetingItem", meeting)
+    }
+    else
+    {
+        @Html.Partial("meetingItem", meeting)
+    }
+}
+
+<p><a href="/meetings">Meetings List</a></p>
+
