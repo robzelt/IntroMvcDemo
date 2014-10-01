@@ -1,0 +1,88 @@
+﻿@model IEnumerable<MvcDemo.Models.Meeting>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div>
+    <div class="row col-md-12 text-center" style="background-color: #fff;">
+        <img style="width:80%" src="~/Content/Images/trinuglogo-redblue.png" alt="Free training for software developers" />
+        @*<img src="~/Content/Images/OldLogo.PNG" style="max-width: 800px;" />*@
+    </div>
+    <div class="row">
+
+        <div style="background-color: #575757; color: #fff;" class="col-md-12 text-center well-sm">
+            <h5 style=" margin: 20px;">
+                Check out this great FREE Azure Community Event:
+                <strong>
+                    <a href="https://www.azureconf.net/"
+                       style="color: #d3d3d3;">AzureConf with Scott Guthrie</a>
+                </strong>
+            </h5>
+        </div>
+
+        <div class="col-md-8">
+            <div style="color: #3d3d3d; margin-top: 10px;">
+                <h3>Upcoming     Events:</h3>
+            </div>
+
+
+
+            @foreach (var meeting in Model)
+            {
+                if (meeting.Title.Contains("Web"))
+                {
+                    @Html.Partial("webMeetingItem", meeting)
+                }
+                else
+                {
+                    @Html.Partial("meetingItem", meeting)
+                }
+            }
+
+            <p><a href="/meetings">Meetings List</a></p>
+        </div>
+
+        <div class="col-md-4">
+
+            <div style="border-color: #d3d3d3; border-radius: 7px; border-style:solid; border-width: thin; padding:5px; margin-top: 10px; padding: 1px 30px 1px 30px;">
+
+                <h3>Main Meeting Location:</h3>
+                <img src="~/Content/Images/msftrtp.jpg" />
+                <p>Microsoft's RTP Office</p>
+                <p>4825 Creekstone Dr, Durham, NC (<a href="https://maps.google.com/maps?q=4825+Creekstone+Dr,+Durham,+NC" target="_blank">map</a>) </p>
+
+                <p>
+                    What is TRINUG? A user group that brings together .Net developers and technology enthusiasts from around the Triangle of North Carolina.
+                    Membership ranges from brand new developers of .Net, to seasoned practitioners.
+                    Membership is always free and all are welcome.
+                </p>
+                <p>What kind of Meetings and gatherings do you have?</p>
+                <ul>
+                    <li>We meet Every Wednesday!</li>
+                    <li>A Main meeting where locally & nationally recognized speakers present. (2nd Wed)</li>
+                    <li>SIGs (Special Interest Groups) discussions and deep dives that each meet once a month. (1st, 3rd, and 4th Wed)</li>
+                    <li>Free, day-long events like <a href="http://www.codecamp.org">RDU Code Camp</a>.</li>
+
+                </ul>
+                <a href="mailto:gpugh@nc.rr.com?subject=Add%20me%20to%20the%20TRINUG%20Newsletter%20List">--> Sign up for the weekly newsletter...</a>
+
+            </div>
+
+            <div style="border-color: #d3d3d3; border-radius: 7px; border-style:solid; border-width: thin; padding:5px; margin-top: 10px; padding: 10px 30px 10px 30px;">
+                <h3>Member Blogs</h3>
+                <p><a href="http://www.ecahill.com/" target="_blank">Elaine Cahill</a></p>
+                <p><a href="http://jamessdixon.wordpress.com/" target="_blank">Jamie Dixon</a></p>
+                <p><a href="http://www.stevensuing.com/" target="_blank">Steven Suing</a></p>
+                <p><a href="http://www.tewari.info/" target="_blank">Ash Tewari</a></p>
+                <p><a href="http://devlicio.us/blogs/derik_whittaker/" target="_blank">Derik Whittaker</a></p>
+                <p><a href="http://essenceofcode.com" target="_blank">David Wilson</a></p>
+                <p><a href="http://www.robzelt.com/blog" target="_blank">Rob Zelt</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+</div>

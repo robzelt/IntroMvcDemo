@@ -1,0 +1,10 @@
+﻿@model MvcDemo.Models.Meeting
+
+<div style="border-color: black; border-style:solid; border-width: thin;">
+    <div style="background-color:black; color:white; padding: 20px;">
+        <h2>@Model.Title</h2>
+    </div>
+    
+    <p>@Model.MeetingDate.ToShortDateString()</p>
+    <p>@Model.Description</p>
+</div>
