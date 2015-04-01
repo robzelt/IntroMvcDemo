@@ -1,0 +1,94 @@
+﻿@model MvcDemo.Models.Interfaces.IMeeting
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Meeting</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", @placeholder = "Gotta title for this get together?" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-sm-10">
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @rows = "6", @placeholder = "Take a shot at describing the meeting in less than 350 characters!" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MeetingDate, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.MeetingDate, new { htmlAttributes = new { @class = "form-control", @placeholder = "When is this meeting scheduled?" } })
+                @Html.ValidationMessageFor(model => model.MeetingDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MakeUpDate, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.MakeUpDate, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter rain out date here..." } })
+                @Html.ValidationMessageFor(model => model.MakeUpDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AttendeesExpectedCount, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.AttendeesExpectedCount, new { htmlAttributes = new { @class = "form-control", @placeholder = "How many are you expecting?" } })
+                @Html.ValidationMessageFor(model => model.AttendeesExpectedCount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AttendeesActualCount, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.AttendeesActualCount, new { htmlAttributes = new { @class = "form-control", @placeholder = "How many showed up?" } })
+                @Html.ValidationMessageFor(model => model.AttendeesActualCount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MeetingAdminEmailAddress, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.MeetingAdminEmailAddress, new { htmlAttributes = new { @class = "form-control", @placeholder = "Who is running the show?" } })
+                @Html.ValidationMessageFor(model => model.MeetingAdminEmailAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConfirmMeetingAdminEmailAddress, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.ConfirmMeetingAdminEmailAddress, new { htmlAttributes = new { @class = "form-control", @placeholder = "Type email address one more time..." } })
+                @Html.ValidationMessageFor(model => model.ConfirmMeetingAdminEmailAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+</div>
