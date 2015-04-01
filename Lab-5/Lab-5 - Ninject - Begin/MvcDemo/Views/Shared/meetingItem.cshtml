@@ -1,0 +1,10 @@
+﻿@model MvcDemo.Models.Meeting
+
+<div style="border-color: #d3d3d3; border-radius: 7px; border-style:solid; border-width: thin; padding:5px; margin-top: 10px;">
+    <h2>@Model.Title</h2>
+    <p> @Model.MeetingDate ( <a href="http://www.meetup.com/TRINUG/" target="_blank">Add to calendar...</a> )</p>
+    <p><a href="http://www.meetup.com/TRINUG/" target="_blank">Registration and event details...</a></p>
+
+    @Html.Raw(@Model.Description)
+</div>
+<hr />
